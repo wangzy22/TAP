@@ -1,0 +1,41 @@
+model:
+  NAME: ViewGenBase
+  encoder_args:
+    NAME: PointTransformerGenEncoder
+    in_channels: 3
+    num_groups: 256
+    group_size: 32
+    subsample: 'fps'
+    group: 'ballquery'
+    radius: 0.1
+    encoder_dims: 256
+    trans_dim: 384
+    drop_path_rate: 0.1
+    depth: 12
+    num_heads: 6
+  generator_args:
+    NAME: ViewTransformer
+    in_channels: 384
+    feat_channels: 256
+    depth: 6
+    channels_per_head: 32
+    drop_rate: 0.1
+    obj_size: 200
+    img_size: 224
+    img_ds_ratio: 32
+  decoder_args:
+    NAME: ViewDecoder
+    in_channels: 256
+    out_channels: 3
+  loss_args:
+    weight_fg: 20
+    weight_bg: 1
+
+
+lr: 5.0e-4
+optimizer:
+  NAME: 'adamw'
+  weight_decay: 0.0005
+warmup_epochs: 3
+min_lr: 1.0e-6
+    

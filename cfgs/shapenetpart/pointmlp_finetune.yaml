@@ -1,0 +1,54 @@
+model:
+  NAME: WholePartSeg
+  segmentor_args:
+    NAME: PointMLPPartSegmentor
+    pretrained_path: ''      # PATH_TO_PRETRAINED_WEIGHTS
+    num_classes: 50
+    points: 2048
+    embed_dim: 64
+    groups: 1
+    res_expansion: 1.0
+    activation: "relu"
+    bias: False
+    use_xyz: False
+    normalize: "anchor"
+    dim_expansion: [2, 2, 2, 2]
+    pre_blocks: [2, 2, 2, 2]
+    pos_blocks: [2, 2, 2, 2]
+    k_neighbors: [24, 24, 24, 24]
+    reducers: [2, 2, 2, 2]
+    de_dims: [512, 256, 128, 128]
+    de_blocks: [4, 4, 4, 4]
+    gmp_dim: 64
+    cls_dim: 64
+
+# ---------------------------------------------------------------------------- #
+# Training cfgs
+# ---------------------------------------------------------------------------- #
+feature_keys: pos,x
+
+lr: 0.001
+min_lr: null
+optimizer:
+  NAME: adamw
+  weight_decay: 1.0e-4  # the best 
+
+criterion_args:
+  NAME: Poly1FocalLoss
+
+# scheduler
+epochs: 300
+sched: multistep
+decay_epochs: [210, 270]
+decay_rate: 0.1
+warmup_epochs: 0
+
+datatransforms:
+  train: [PointsToTensor, PointCloudScaling,PointCloudCenterAndNormalize,PointCloudJitter,ChromaticDropGPU]
+  val: [PointsToTensor, PointCloudCenterAndNormalize]
+  kwargs:
+    jitter_sigma: 0.001
+    jitter_clip: 0.005
+    scale: [0.8, 1.2]
+    gravity_dim: 1
+    angle: [0, 1.0, 0]

@@ -1,0 +1,49 @@
+dataset:
+  common:
+    NAME: ScanObjectNNHardest
+    mode: 'objectonly'
+    data_dir: './data/ScanObjectNN/h5_files/main_split_nobg'
+  train:
+    split: train
+  val:
+    split: val
+    num_points: 1024 
+
+model:
+  NAME: BaseCls
+  encoder_args:
+    NAME: PointTransformerEncoder
+    in_channels: 3
+    num_groups: 256
+    group_size: 32
+    subsample: 'fps'
+    group: 'ballquery'
+    radius: 0.1
+    encoder_dims: 256
+    trans_dim: 384
+    drop_path_rate: 0.1
+    depth: 12
+    num_heads: 6
+  cls_args:
+    NAME: ClsHead
+    in_channels: 768
+    num_classes: 15
+    mlps: [512, 256]
+    norm_args:
+      norm: 'bn1d'
+
+
+mode: finetune_encoder
+pretrained_path: ''      # PATH_TO_PRETRAINED_WEIGHTS
+
+lr: 5.0e-4 
+optimizer:
+ NAME: 'adamw'
+ weight_decay: 0.05
+
+sched: cosine
+epochs: 300
+t_max: 300
+warmup_epochs: 10
+min_lr: 1.0e-6
+grad_norm_clip: 10

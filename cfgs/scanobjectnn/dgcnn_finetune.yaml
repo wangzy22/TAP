@@ -1,0 +1,35 @@
+model: 
+  NAME: BaseCls
+  encoder_args:
+    NAME: DGCNN
+    in_channels: 4
+    channels: 64
+    n_classes: 40 
+    emb_dims: 1024
+    n_blocks: 5
+    conv: 'edge'
+    k: 20
+    dropout: 0.5
+    norm_args: {'norm': 'bn'}
+    act_args: {'act': 'leakyrelu', 'negative_slope': 0.2}
+  cls_args:
+    NAME: ClsHead
+    num_classes: 15
+    mlps: [512, 256]
+    norm_args:
+      norm: 'bn1d'
+
+mode: finetune_encoder
+pretrained_path:  ''      # PATH_TO_PRETRAINED_WEIGHTS
+
+lr: 5.0e-4 
+optimizer:
+ NAME: 'adamw'
+ weight_decay: 0.05
+
+sched: cosine
+epochs: 300
+t_max: 300
+warmup_epochs: 10
+min_lr: 1.0e-6
+grad_norm_clip: 10

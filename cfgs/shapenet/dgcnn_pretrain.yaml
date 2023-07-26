@@ -1,0 +1,36 @@
+model: 
+  NAME: ViewGenBase
+  encoder_args:
+    NAME: DGCNNGenEncoder
+    in_channels: 4
+    channels: 64
+    n_classes: 40 
+    emb_dims: 1024
+    n_blocks: 5
+    conv: 'edge'
+    k: 20
+    dropout: 0.5
+    norm_args: {'norm': 'bn'}
+    act_args: {'act': 'leakyrelu', 'negative_slope': 0.2}
+  generator_args:
+    NAME: ViewTransformer
+    in_channels: 1024
+    feat_channels: 256
+    depth: 6
+    channels_per_head: 32
+    drop_rate: 0.1
+    obj_size: 200
+    img_size: 224
+    img_ds_ratio: 32
+  decoder_args:
+    NAME: ViewDecoder
+    in_channels: 256
+    out_channels: 3
+  loss_args:
+    weight_fg: 20
+    weight_bg: 1
+
+batch_size: 16
+val_batch_size: 32
+lr: 0.001
+min_lr: 5.0e-6

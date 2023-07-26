@@ -1,0 +1,35 @@
+model:
+  NAME: ViewGenBase
+  encoder_args:
+    NAME: PointMLPGenEncoder
+    in_channels: 4
+    embed_dim: 64
+    groups: 1
+    res_expansion: 1.0
+    activation: "relu"
+    bias: False
+    use_xyz: False
+    normalize: "anchor"
+    dim_expansion: [ 2, 2, 2, 2 ]
+    pre_blocks: [ 2, 2, 2, 2 ]
+    pos_blocks: [ 2, 2, 2, 2 ]
+    k_neighbors: [ 24, 24, 24, 24 ]
+    reducers: [ 2, 2, 2, 2 ]
+  generator_args:
+    NAME: ViewTransformer
+    in_channels: 1024
+    feat_channels: 256
+    depth: 6
+    channels_per_head: 32
+    drop_rate: 0.1
+    obj_size: 200
+    img_size: 224
+    img_ds_ratio: 32
+  decoder_args:
+    NAME: ViewDecoder
+    in_channels: 256
+    out_channels: 3
+  loss_args:
+    weight_fg: 20
+    weight_bg: 1
+    

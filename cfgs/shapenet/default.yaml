@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------- #
+# Dataset cfgs
+# ---------------------------------------------------------------------------- #
+dataset:
+  common:
+    NAME: ShapeNet
+    data_dir: './data/ShapeNet55'
+    n_views: 6
+    gravity_dim: 2
+  train:
+    split: train
+  val:
+    split: val
+
+mode: pretrain_viewgen
+num_points: 1024  # the number of points passed into model
+num_votes: 10
+num_classes: &nclass
+  15
+
+datatransforms:
+  train: [PointsToTensor, PointCloudScaling, PointCloudCenterAndNormalize]
+  vote: [PointsToTensor, PointCloudCenterAndNormalize]
+  val: [PointsToTensor, PointCloudCenterAndNormalize]
+  kwargs:
+    scale: [0.9, 1.1]
+    gravity_dim: 2
+
+batch_size: 32
+val_batch_size: 64 
+dataloader:
+  num_workers: 4
+
+# ---------------------------------------------------------------------------- #
+# Training cfgs
+# ---------------------------------------------------------------------------- #
+# scheduler
+criterion:
+  NAME: SmoothCrossEntropy
+  label_smoothing: 0.3
+
+# Optimizer
+lr: 0.002
+optimizer:
+ NAME: 'adamw'
+ weight_decay: 0.05
+
+sched: cosine
+epochs: 100
+warmup_epochs: 0
+min_lr: 1.0e-5
+t_max: 100
+
+grad_norm_clip: 10
+
+# ---------------------------------------------------------------------------- #
+# io and misc
+# ---------------------------------------------------------------------------- #
+log_dir: 'shapenet55'
+print_freq: 1
+val_freq: 1
+vis_freq: 9
+vis_num: 8
+# ----------------- Model related
+pretrained_path: null 
+
+wandb:
+  project: PointNeXt-ShapeNet55

@@ -1,0 +1,48 @@
+model:
+  NAME: ViewGenBase
+  encoder_args:
+    NAME: PointNet2GenEncoder
+    in_channels: 4
+    width: null
+    layers: 3
+    use_res: False
+    strides: [2, 4, 2]
+    mlps: [[[64, 64, 128]],  # stage 1: 96
+          [[128, 128, 256]],
+          [[256, 512, 1024]]
+          ] # stage 4: 1024
+    radius: [0.2, 0.4, 0.2]
+    num_samples: [32, 64, 32]
+    sampler: fps
+    aggr_args:
+      NAME: 'convpool'
+      feature_type: 'dp_fj'
+      anisotropic: False
+      reduction: 'max'
+    group_args:
+      NAME: 'ballquery'
+      use_xyz: True
+      normalize_dp: False
+    conv_args: 
+      order: conv-norm-act
+    act_args:
+      act: 'relu'
+    norm_args:
+      norm: 'bn'
+  generator_args:
+    NAME: ViewTransformer
+    in_channels: 1024
+    feat_channels: 256
+    depth: 6
+    channels_per_head: 32
+    drop_rate: 0.1
+    obj_size: 200
+    img_size: 224
+    img_ds_ratio: 32
+  decoder_args:
+    NAME: ViewDecoder
+    in_channels: 256
+    out_channels: 3
+  loss_args:
+    weight_fg: 20
+    weight_bg: 1
