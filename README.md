@@ -3,11 +3,11 @@
 Created by [Ziyi Wang*](https://wangzy22.github.io/), [Xumin Yu*](https://yuxumin.github.io/), [Yongming Rao](https://raoyongming.github.io/), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=zh-CN).
 
 
-This repository is a pyTorch implementation of **TAP** (short for *Take-A-Photo*).
+This repository is a pyTorch implementation of our ICCV 2023 paper **TAP** (short for *Take-A-Photo*).
 
 TAP is a generative pre-training method for *any* point cloud models. Given point cloud features extracted from backbone models, we generate view images from different instructed poses and calculate pixel-wise loss on image pixels as the pre-training scheme. Our pre-training method shows superior results on ScanObjectNN classification and ShapeNetPart segmentation than other generative pre-training methods based on mask modeling.
 
-[[arXiv]()][[Project Page]()][[Models]()]
+[[arXiv]()][[Project Page](https://tap.ivg-research.xyz)]
 
 ![intro](fig/tap.png)
 
