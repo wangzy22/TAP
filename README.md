@@ -1,5 +1,8 @@
 # Take-A-Photo: 3D-to-2D Generative Pre-training of Point Cloud Models
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/take-a-photo-3d-to-2d-generative-pre-training/3d-point-cloud-classification-on-scanobjectnn)](https://paperswithcode.com/sota/3d-point-cloud-classification-on-scanobjectnn?p=take-a-photo-3d-to-2d-generative-pre-training)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/take-a-photo-3d-to-2d-generative-pre-training/3d-part-segmentation-on-shapenet-part)](https://paperswithcode.com/sota/3d-part-segmentation-on-shapenet-part?p=take-a-photo-3d-to-2d-generative-pre-training)
+
 Created by [Ziyi Wang*](https://wangzy22.github.io/), [Xumin Yu*](https://yuxumin.github.io/), [Yongming Rao](https://raoyongming.github.io/), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=zh-CN).
 
 
