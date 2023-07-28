@@ -7,7 +7,7 @@ This repository is a pyTorch implementation of our ICCV 2023 paper **TAP** (shor
 
 TAP is a generative pre-training method for *any* point cloud models. Given point cloud features extracted from backbone models, we generate view images from different instructed poses and calculate pixel-wise loss on image pixels as the pre-training scheme. Our pre-training method shows superior results on ScanObjectNN classification and ShapeNetPart segmentation than other generative pre-training methods based on mask modeling.
 
-[[arXiv]()][[Project Page](https://tap.ivg-research.xyz)]
+[[arXiv](https://arxiv.org/abs/2307.14971)][[Project Page](https://tap.ivg-research.xyz)]
 
 ![intro](fig/tap.png)
 
@@ -157,7 +157,7 @@ If you find our work useful in your research, please consider citing:
 @article{wang2023tap,
 title={Take-A-Photo: 3D-to-2D Generative Pre-training of Point Cloud Models},
 author={Wang, Ziyi and Yu, Xumin and Rao, Yongming and Zhou, Jie and Lu, Jiwen},
-journal={arXiv preprint arXiv:????},
+journal={arXiv preprint arXiv:2307.14971},
 year={2023}
 }
 ```
