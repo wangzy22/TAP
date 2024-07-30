@@ -47,7 +47,7 @@ cd ../../..
 ### Data Preparation
 
 #### ShapeNet Dataset
-- Download the 12 views image dataset of ShapeNet from [here](http://maxwell.cs.umass.edu/mvcnn-data/shapenet55v1.tar). The images are rendered by [MVCNN](https://github.com/suhangpro/mvcnn).
+- Download the 12 views image dataset of ShapeNet from [here]([http://maxwell.cs.umass.edu/mvcnn-data/shapenet55v1.tar](https://cloud.tsinghua.edu.cn/f/dd9ef45fb00e427eae23/?dl=1)). The images are rendered by [MVCNN](https://github.com/suhangpro/mvcnn).
 
 - Download the point cloud dataset that is corresponding to the ShapeNet image dataset above from [here](https://drive.google.com/file/d/1AFFHfAzpeNygphBgMP7uljwmBu8gPQT2/view?usp=share_link)(Google) or [here](https://cloud.tsinghua.edu.cn/f/610fb0228eca4035bd83/?dl=1)(Tsinghua Cloud). The point clouds are sampled by us. 
 
@@ -62,7 +62,7 @@ cd ../../..
 
 #### Data File Structure
     ```
-    P2P/
+    TAP/
     |-- data/
         |-- ShapeNet55/
             |-- poinyclouds
